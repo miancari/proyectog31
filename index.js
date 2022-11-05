@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(router)
 
 router.get('/',function (req,res){
-    res.send('🚀Hola desde la raiz')
+    res.send('🚀Hola desde la raiz🚀')
 })
 
 router.get('/login', function (req,res){
@@ -22,7 +22,7 @@ router.post('/agregar', function(req,res){
 })
 
 router.delete('/delete', function (req,res){
-    res.send('Mensaje borrado')
+    res.send('😝Mensaje borrado')
 })
 
 
