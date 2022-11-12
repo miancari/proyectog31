@@ -1,10 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
+import { reguser, mosuser, showoneuser, updateoneuser } from "../controllers/usecontrollers.js";
+import {db} from '../bdmongo.js';
 
-import { user } from "../models/user.js";
+//import  user  from "../models/user.js";
 export const router = express.Router();
 
-let user1 = new user();
+//let user1 = new user();
+
+//Aca vamos con el usuario
+router.post("/suser", reguser);
+router.get('/muser', mosuser);
+router.get('/muser/:id', showoneuser);
+router.put('updateuser/:id', updateoneuser);
 
 router.get('/', function (req,res){
     res.send('🚀Hola desde la raiz🚀')
@@ -29,8 +37,6 @@ router.post('/agregar', function (req,res){
 
 })
 
-router.delete('/delete', function (req,res){
-    res.send('🤩Mensaje borrado')
-})
+
 
 export default router;

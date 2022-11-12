@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
-const bd_uri = 'momongodb+srv://miancari:Millos07@cluster0.1mljg8b.mongodb.net/?retryWrites=true&w=majorityngodb+srv://osmereduardo:Colombia2022@cluster0.dnx9hq7.mongodb.net/dbeventos?retryWrites=true&w=majority';
-export const db = await mongoose.connect(bd_uri);
-console.log("La conexion fue realizada con exito a la bd: ", db.connection.name);
+const uri = 'mongodb+srv://miancari:Millos07@cluster0.1mljg8b.mongodb.net/dbeventos?retryWrites=true&w=majority';
+export const db = mongoose.connect(uri).then(() => {
+    console.log(" la conexion fue realizada🚄 con exito a la BD: 🚄")
+}).catch((error) => console.error(" Problemas al conectar a la base de datos de Mongdb 😩",error));
+
+export default db;
