@@ -1,20 +1,29 @@
 import express from "express";
 import mongoose from "mongoose";
-import { reguser, mosuser, showoneuser, updateoneuser } from "../controllers/usecontrollers.js";
+import { reguser, mosuser, showoneuser, updateoneuser, deluser } from "../controllers/usecontrollers.js";
+import { regevento, mostrarevento, unevento, upevento, delevento } from "../controllers/eventocontroller.js";
 import {db} from '../bdmongo.js';
 
-//import  user  from "../models/user.js";
 export const router = express.Router();
 
-//let user1 = new user();
+//Rutas de registro de usuarios
 
-//Aca vamos con el usuario
 router.post("/suser", reguser);
 router.get('/muser', mosuser);
 router.get('/muser/:id', showoneuser);
-router.put('updateuser/:id', updateoneuser);
+router.put('/updateuser/:id', updateoneuser);
+router.delete('/buser/:id', deluser);
 
-router.get('/', function (req,res){
+// Rutas de registro de eventos deportivos
+
+router.post('/regevento', regevento);
+router.get('/mevento', mostrarevento);
+router.get('/mevento/:id', unevento);
+router.put('/upevento/:id', upevento);
+router.delete('/delevento/:id', delevento);
+
+
+/*router.get('/', function (req,res){
     res.send('🚀Hola desde la raiz🚀')
 })
 
@@ -35,7 +44,7 @@ router.post('/agregar', function (req,res){
     })
 
 
-})
+})*/
 
 
 

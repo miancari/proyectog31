@@ -1,6 +1,6 @@
 import {user} from '../models/user.js';
 
-//guardar usuario
+//Registrar un usuario en la base de datos mongos
 
 export const reguser = (req,res) => {
     const user1 = user(req.body);
@@ -10,7 +10,7 @@ export const reguser = (req,res) => {
         .catch((error) => res.json({ message: error }));
 };
 
-// Mostrar información de los usuarios
+// Mostrar todos los usuarios registrados
 
 export const mosuser = (req,res) => {
 
@@ -20,7 +20,7 @@ export const mosuser = (req,res) => {
     .catch((error) => res.json({message:error}));
 }
 
-//Mostrar un usuario especifico
+//Mostrar la información de un usuario especifico
 
 export const showoneuser = (req, res) => {
     const { id } = req.params;
@@ -28,6 +28,16 @@ export const showoneuser = (req, res) => {
         .findById(id)
         .then((data) => res.json(data))
         .catch((error) => res.json({message: error}))
+};
+
+//Borrar un usuario
+
+export const deluser = (req,res) => {
+    const {id} = req.params;
+    user
+        .deleteOne({_id: id})
+        .then ((data) => res.json(data))
+        .catch((error) => res.json({message: error}));
 };
 
 //Actualizar un usuario
@@ -40,3 +50,6 @@ export const updateoneuser = (req,res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error}));
 };
+
+export default reguser;
+

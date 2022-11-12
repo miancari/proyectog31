@@ -23,10 +23,13 @@ const eventoSchema = new  mongoose.Schema(
       tipoevento: {
         type: String,
         require: true
+      },
+    },  
+      {
+        timestamps: true,
+        versionKey: false,
       }
-
-    }
 );
 
-export const evento = mongoose.model('ceventos','eventoSchema');
+export const evento = mongoose.model('ceventos',eventoSchema);
 export default evento;
