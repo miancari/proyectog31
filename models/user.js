@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import bcrypt, { hash } from 'bcrypt';
 
 const userSchema = new mongoose.Schema (
     {
@@ -21,6 +22,17 @@ const userSchema = new mongoose.Schema (
         versionKey: false,
     }
 );
-export const user = mongoose.model('users',userSchema);
 
+//Encriptar contraseña
+
+userSchema.pre('save', function(next) {
+    const user = this
+    bcrypt.hash(user.password, 10, (error, hash) => {
+        user.password = hash
+        next()
+     })
+    
+});
+
+export const user = mongoose.model('users',userSchema);
 export default user;
