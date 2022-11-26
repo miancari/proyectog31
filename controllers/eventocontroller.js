@@ -33,9 +33,9 @@ export const unevento = (req, res) => {
 
 export const upevento = (req,res) => {
     const {id} = req.params;
-    const { fecha, equipo1, equipo2, marcador1, marcador2, evento} = req.body;
-    evento
-        .updateOne({ _id: id}, { $set: {fecha, equipo1, equipo2, marcador1, marcador2, evento }})
+    const { fecha, equipo1, equipo2, marcador1, marcador2, tipoevento} = req.body;
+    evento  
+        .updateOne({ _id: id}, { $set: {fecha, equipo1, equipo2, marcador1, marcador2, tipoevento }})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error}));
 };

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { reguser, mosuser, showoneuser, updateoneuser, deluser } from "../controllers/usecontrollers.js";
 import { regevento, mostrarevento, unevento, upevento, delevento } from "../controllers/eventocontroller.js";
 import {db} from '../bdmongo.js';
-
+import login from "../controllers/logincontroller.js";
 export const router = express.Router();
 
 //Rutas de registro de usuarios
@@ -13,6 +13,7 @@ router.get('/muser', mosuser);
 router.get('/muser/:id', showoneuser);
 router.put('/updateuser/:id', updateoneuser);
 router.delete('/buser/:id', deluser);
+router.post('/login', login);
 
 // Rutas de registro de eventos deportivos
 
